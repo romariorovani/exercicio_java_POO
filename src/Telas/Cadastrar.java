@@ -17,9 +17,9 @@ public class Cadastrar extends javax.swing.JInternalFrame {
 
         try {
             Tipo_Imovel imovel = new Tipo_Imovel();
-            imovel.codigo = Integer.parseInt(txtid.getText());
-            imovel.aluguel_base = Double.parseDouble(txtalu.getText().replace(",", "."));
-            imovel.tipo = cbntip.getSelectedItem().toString();
+            imovel.setCodigo(Integer.parseInt(txtid.getText())) ;
+            imovel.setAluguel_base(Double.parseDouble(txtalu.getText()));
+            imovel.setTipo(cbntip.getSelectedItem().toString()) ;
             imovel.descricao = txtdec.getText();
             imovel.bairro = txtbai.getText();
             imovel.status = cbnsta.getSelectedItem().toString();
@@ -28,7 +28,7 @@ public class Cadastrar extends javax.swing.JInternalFrame {
 
             for (int i = 0; i < TelaPrincipal.imoveis.size(); i++) {
 
-                if (TelaPrincipal.imoveis.get(i).codigo == imovel.codigo) {
+                if (TelaPrincipal.imoveis.get(i).getCodigo() == imovel.getCodigo()) {
                     jaexiste = true;
                 }
 
@@ -55,10 +55,9 @@ public class Cadastrar extends javax.swing.JInternalFrame {
 
     }
 
-    public void limpar_campos() {
+    public void limpar() {
         txtid.setText(null);
         txtalu.setText(null);
-
         txtdec.setText(null);
         txtbai.setText(null);
     }
@@ -93,6 +92,7 @@ public class Cadastrar extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setResizable(true);
         setTitle("CADASTRAR");
 
         jLabel1.setText("Código do Imóvel");
@@ -158,7 +158,7 @@ public class Cadastrar extends javax.swing.JInternalFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbnsta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 43, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -221,7 +221,7 @@ public class Cadastrar extends javax.swing.JInternalFrame {
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -230,7 +230,7 @@ public class Cadastrar extends javax.swing.JInternalFrame {
                 .addGap(106, 106, 106))
         );
 
-        setBounds(0, 0, 600, 360);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadActionPerformed
@@ -241,7 +241,7 @@ public class Cadastrar extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        limpar_campos();
+        limpar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

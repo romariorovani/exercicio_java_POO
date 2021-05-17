@@ -1,13 +1,34 @@
 
 package Imoveis;
-import Imoveis.Tipo_Imovel;
-import javax.swing.JOptionPane;
-import Telas.TelaPrincipal;
 
 public class Imovel {
 
-    public int codigo;
-    public double aluguel_base;
-    public String tipo;
+  private int codigo;
+   private double aluguel_base;
+   private String tipo;
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public double getAluguel_base() {
+        return aluguel_base;
+    }
+
+    public void setAluguel_base(double aluguel_base) {
+        this.aluguel_base = aluguel_base;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
 }

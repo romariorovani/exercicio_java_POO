@@ -1,53 +1,53 @@
-
 package Telas;
 
-import Imoveis.Tipo_Imovel;
-import javax.swing.JOptionPane;
 import Telas.TelaPrincipal;
 import javax.swing.table.DefaultTableModel;
+import Metodos.Metodos;
 
 public class Relatorio extends javax.swing.JInternalFrame {
 
-    
     public Relatorio() {
         initComponents();
         DefaultTableModel dtm = (DefaultTableModel) tbl.getModel();
         for (int i = 0; i < TelaPrincipal.imoveis.size(); i++) {
 
-            Object[] dados = {TelaPrincipal.imoveis.get(i).codigo, TelaPrincipal.imoveis.get(i).aluguel_base, TelaPrincipal.imoveis.get(i).tipo, TelaPrincipal.imoveis.get(i).descricao, TelaPrincipal.imoveis.get(i).bairro, TelaPrincipal.imoveis.get(i).status, TelaPrincipal.imoveis.get(i).aluguel()};
+            Object[] dadostabela = {TelaPrincipal.imoveis.get(i).getCodigo(), TelaPrincipal.imoveis.get(i).getAluguel_base(), TelaPrincipal.imoveis.get(i).getTipo(), TelaPrincipal.imoveis.get(i).descricao, TelaPrincipal.imoveis.get(i).bairro, TelaPrincipal.imoveis.get(i).status, Metodos.aluguel(TelaPrincipal.imoveis.get(i))};
 
-            dtm.addRow(dados);
+            dtm.addRow(dadostabela);
         }
     }
 // alugados
 
-    public void gr1() {
+    public void relalugado() {
         DefaultTableModel dtm = (DefaultTableModel) tbl.getModel();
-  dtm.setRowCount(0);
+        dtm.setRowCount(0);
         for (int i = 0; i < TelaPrincipal.imoveis.size(); i++) {
             if (TelaPrincipal.imoveis.get(i).status.equals("Alugado")) {
-                Object[] dados = {TelaPrincipal.imoveis.get(i).codigo, TelaPrincipal.imoveis.get(i).aluguel_base, TelaPrincipal.imoveis.get(i).tipo, TelaPrincipal.imoveis.get(i).descricao, TelaPrincipal.imoveis.get(i).bairro, TelaPrincipal.imoveis.get(i).status, TelaPrincipal.imoveis.get(i).aluguel()};
+                Object[] dadostabela = {TelaPrincipal.imoveis.get(i).getCodigo(), TelaPrincipal.imoveis.get(i).getAluguel_base(),
+                    TelaPrincipal.imoveis.get(i).getTipo(), TelaPrincipal.imoveis.get(i).descricao, TelaPrincipal.imoveis.get(i).bairro,
+                    TelaPrincipal.imoveis.get(i).status, Metodos.aluguel(TelaPrincipal.imoveis.get(i))};
 
-                dtm.addRow(dados);
+                dtm.addRow(dadostabela);
             }
         }
-  
+
     }
 //disponiveis
-    public void gr2() {
+
+    public void reldispo() {
         DefaultTableModel dtm = (DefaultTableModel) tbl.getModel();
- dtm.setRowCount(0);
+        dtm.setRowCount(0);
         for (int i = 0; i < TelaPrincipal.imoveis.size(); i++) {
             if (TelaPrincipal.imoveis.get(i).status.equals("Disponivel")) {
-                Object[] dados = {TelaPrincipal.imoveis.get(i).codigo, TelaPrincipal.imoveis.get(i).aluguel_base, TelaPrincipal.imoveis.get(i).tipo, TelaPrincipal.imoveis.get(i).descricao, TelaPrincipal.imoveis.get(i).bairro, TelaPrincipal.imoveis.get(i).status, 0.0};
+                Object[] dados = {TelaPrincipal.imoveis.get(i).getCodigo(), TelaPrincipal.imoveis.get(i).getAluguel_base(), 
+                    TelaPrincipal.imoveis.get(i).getTipo(), TelaPrincipal.imoveis.get(i).descricao, TelaPrincipal.imoveis.get(i).bairro,
+                    TelaPrincipal.imoveis.get(i).status, Metodos.aluguel(TelaPrincipal.imoveis.get(i))};
 
                 dtm.addRow(dados);
             }
         }
-  
+
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -158,7 +158,7 @@ public class Relatorio extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel1)))
                         .addGap(228, 228, 228))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
                         .addGap(26, 26, 26))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(237, 237, 237)
@@ -177,48 +177,50 @@ public class Relatorio extends javax.swing.JInternalFrame {
                     .addComponent(jRadioButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(24, 24, 24))
         );
 
-        setBounds(0, 0, 600, 360);
+        setBounds(0, 0, 655, 371);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnaKeyReleased
         // TODO add your handling code here:
-       // /alugado
-      
+        // /alugado
+
     }//GEN-LAST:event_btnaKeyReleased
 
     private void btnaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnaMouseClicked
         // TODO add your handling code here:
-        gr1();
+        relalugado();
     }//GEN-LAST:event_btnaMouseClicked
 
     private void btndMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btndMouseClicked
         // TODO add your handling code here:
-        gr2();
+        reldispo();
     }//GEN-LAST:event_btndMouseClicked
 
     private void jRadioButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MouseClicked
         // TODO add your handling code here:
-        
+
         //
-           DefaultTableModel dtm = (DefaultTableModel) tbl.getModel();
-           dtm.setRowCount(0);
+        DefaultTableModel dtm = (DefaultTableModel) tbl.getModel();
+        dtm.setRowCount(0);
         for (int i = 0; i < TelaPrincipal.imoveis.size(); i++) {
 
-            Object[] dados = {TelaPrincipal.imoveis.get(i).codigo, TelaPrincipal.imoveis.get(i).aluguel_base, TelaPrincipal.imoveis.get(i).tipo, TelaPrincipal.imoveis.get(i).descricao, TelaPrincipal.imoveis.get(i).bairro, TelaPrincipal.imoveis.get(i).status, TelaPrincipal.imoveis.get(i).aluguel()};
+            Object[] dadostabela = {TelaPrincipal.imoveis.get(i).getCodigo(), TelaPrincipal.imoveis.get(i).getAluguel_base(), 
+                TelaPrincipal.imoveis.get(i).getTipo(), TelaPrincipal.imoveis.get(i).descricao, TelaPrincipal.imoveis.get(i).bairro, 
+                TelaPrincipal.imoveis.get(i).status,Metodos.aluguel(TelaPrincipal.imoveis.get(i))};
 
-            dtm.addRow(dados);
+            dtm.addRow(dadostabela);
         }
     }//GEN-LAST:event_jRadioButton1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        this.doDefaultCloseAction();    
+
+        this.doDefaultCloseAction();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -4,6 +4,7 @@ package Telas;
 import Imoveis.Tipo_Imovel;
 import javax.swing.JOptionPane;
 import Telas.TelaPrincipal;
+import Metodos.Metodos;
 
 
 public class Alugar extends javax.swing.JInternalFrame {
@@ -13,18 +14,18 @@ public class Alugar extends javax.swing.JInternalFrame {
         initComponents();
     }
 
-    public void alugar() {
+    public void alugaimovel() {
         boolean encontrado = false;
-        int cod = -1012322364;
+        int cod = -1234567890;
 
         try {
             cod = Integer.parseInt(txtcod.getText());
             for (int i = 0; i < TelaPrincipal.imoveis.size(); i++) {
 
-                if (TelaPrincipal.imoveis.get(i).codigo == cod) {
+                if (TelaPrincipal.imoveis.get(i).getCodigo() == cod) {
                     encontrado = true;
                     if (TelaPrincipal.imoveis.get(i).status.equals("Disponivel")) {
-                        JOptionPane.showMessageDialog(null, "Imovel Alugado Com Sucesso\n Valor do aluguel:" + TelaPrincipal.imoveis.get(i).aluguel()+"Código do Imóvel: \n"+TelaPrincipal.imoveis.get(i).codigo);
+                        JOptionPane.showMessageDialog(null, "Imovel Alugado Com Sucesso\n Valor do aluguel:" + Metodos.aluguel(TelaPrincipal.imoveis.get(i)) + "Código do Imóvel: \n"+TelaPrincipal.imoveis.get(i).getCodigo());
                         TelaPrincipal.imoveis.get(i).status = "Alugado";
                     } else {
                         JOptionPane.showMessageDialog(null, "Imóvel Indisponível");
@@ -58,6 +59,7 @@ public class Alugar extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setResizable(true);
         setTitle("ALUGAR");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -87,19 +89,19 @@ public class Alugar extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
+                        .addGap(135, 135, 135)
+                        .addComponent(btnalu, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnalu, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtcod, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtcod, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(199, 199, 199)
                         .addComponent(AlugarImovel)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,19 +112,19 @@ public class Alugar extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtcod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnalu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(35, 35, 35))
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btnalu))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 490, 336);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnaluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaluActionPerformed
         // TODO add your handling code here:
-        alugar();
+        alugaimovel();
     }//GEN-LAST:event_btnaluActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
